@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.TextViewCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,8 @@ public class StudentFragment extends Fragment {
         Button btnSave = view.findViewById(R.id.btn_save);
 
         Bundle bundle = getArguments();
-        Student addStudent = (Student) bundle.getSerializable(MainActivity.NAME_STUDENT);
+        Student addStudent = (Student) bundle.getParcelable(MainActivity.NAME_STUDENT);
+        Log.d("ERROR", addStudent.getName());
         tvName.setText(addStudent.getName());
 
         return view;

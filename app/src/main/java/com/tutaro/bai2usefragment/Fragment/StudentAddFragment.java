@@ -3,6 +3,7 @@ package com.tutaro.bai2usefragment.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +29,7 @@ public class StudentAddFragment extends Fragment {
         Button btnAdd = view.findViewById(R.id.btn_add);
 
         final Student nameStudent = new Student(edtAddName.getText() + "");
-
+        Log.d("ERROR", nameStudent.getName());
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

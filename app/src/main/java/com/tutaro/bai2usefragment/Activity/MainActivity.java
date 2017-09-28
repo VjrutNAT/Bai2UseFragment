@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         StudentFragment studentFragment = new StudentFragment();
 
         Bundle bundle = new Bundle();
-        bundle.putSerializable(NAME_STUDENT, student);
+        bundle.putParcelable(NAME_STUDENT, student);
         studentFragment.setArguments(bundle);
 
         FragmentManager manager = getSupportFragmentManager();
