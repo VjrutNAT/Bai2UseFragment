@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Bai2 Use Fragment</string>
+    <string name="edt_add_name">Nhập họ và tên: </string>
+    <string name="name">Họ và tên: </string>
+    <string name="hometown">Quê quán: </string>
+    <string name="birthday">Ngày sinh: </string>
+    <string name="male_or_female">Giới tính: </string>
+    <string name="class_student">Lớp: </string>
+    <string name="course">Khóa học: </string>
+    <string name="btn_save">Lưu</string>
+    <string name="btn_add">Nhập</string>
+</resources>
