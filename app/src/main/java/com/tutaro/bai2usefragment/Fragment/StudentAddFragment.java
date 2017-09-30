@@ -20,20 +20,20 @@ import com.tutaro.bai2usefragment.R;
 
 public class StudentAddFragment extends Fragment {
 
+    private EditText edtAddName;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_student_add, container, false);
 
-        final EditText edtAddName = view.findViewById(R.id.edt_add_name);
+        edtAddName = view.findViewById(R.id.edt_add_name);
         Button btnAdd = view.findViewById(R.id.btn_add);
 
-        final Student nameStudent = new Student(edtAddName.getText() + "");
-        Log.d("ERROR", nameStudent.getName());
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).gotoStudentFragment(nameStudent);
+                ((MainActivity) getActivity()).gotoStudentFragment(edtAddName.getText().toString());
             }
         });
 

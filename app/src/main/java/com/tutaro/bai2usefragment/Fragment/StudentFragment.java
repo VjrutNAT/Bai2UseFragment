@@ -4,7 +4,6 @@ package com.tutaro.bai2usefragment.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.TextViewCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,18 +27,29 @@ public class StudentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_student, container, false);
 
-        TextView tvName = view.findViewById(R.id.tv_name_student);
-        EditText edtHomeTown = view.findViewById(R.id.edt_hometown);
-        EditText edtMaleOrFemale = view.findViewById(R.id.edt_male_or_female);
-        EditText edtBirthday = view.findViewById(R.id.edt_birthday);
-        EditText edtClassStudent = view.findViewById(R.id.edt_class);
-        EditText edtCourse = view.findViewById(R.id.edt_course);
+        final TextView tvName = view.findViewById(R.id.tv_name_student);
+        final EditText edtHomeTown = view.findViewById(R.id.edt_hometown);
+        final EditText edtMaleOrFemale = view.findViewById(R.id.edt_male_or_female);
+        final EditText edtBirthday = view.findViewById(R.id.edt_birthday);
+        final EditText edtClassStudent = view.findViewById(R.id.edt_class);
+        final EditText edtCourse = view.findViewById(R.id.edt_course);
         Button btnSave = view.findViewById(R.id.btn_save);
 
-        Bundle bundle = getArguments();
-        Student addStudent = (Student) bundle.getParcelable(MainActivity.NAME_STUDENT);
-        Log.d("ERROR", addStudent.getName());
-        tvName.setText(addStudent.getName());
+        Bundle bundle = this.getArguments();
+
+        if (bundle != null) {
+            Student student = (Student) bundle.getParcelable(MainActivity.NAME_STUDENT);
+            tvName.setText(student.getName());
+        }
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).gotoStudentInfoFragment(tvName.getText().toString(), edtHomeTown.getText().toString(),
+                        edtMaleOrFemale.getText().toString(), edtBirthday.getText().toString(), edtClassStudent.getText().toString(),
+                        edtCourse.getText().toString());
+            }
+        });
 
         return view;
     }
