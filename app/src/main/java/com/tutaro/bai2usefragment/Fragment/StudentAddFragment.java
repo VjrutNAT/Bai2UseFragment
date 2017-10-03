@@ -1,5 +1,6 @@
 package com.tutaro.bai2usefragment.Fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -22,6 +23,17 @@ public class StudentAddFragment extends Fragment {
 
     private EditText edtAddName;
 
+    private GotoStudentFragment studentFragment;
+
+    public StudentAddFragment() {
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        studentFragment = (GotoStudentFragment) context;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -33,10 +45,15 @@ public class StudentAddFragment extends Fragment {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity) getActivity()).gotoStudentFragment(edtAddName.getText().toString());
+//                ((MainActivity) getActivity()).gotoStudentFragment(edtAddName.getText().toString());
+                studentFragment.onGotoStudentFragment(edtAddName.getText().toString());
             }
         });
 
         return view;
+    }
+
+    public  interface GotoStudentFragment{
+        void onGotoStudentFragment(String name);
     }
 }

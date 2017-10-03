@@ -1,6 +1,7 @@
 package com.tutaro.bai2usefragment.Fragment;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -21,6 +22,17 @@ import com.tutaro.bai2usefragment.R;
  */
 
 public class StudentFragment extends Fragment {
+
+    private GotoStudentInfoFragment studentInfoFragment;
+
+    public StudentFragment() {
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        studentInfoFragment = (GotoStudentInfoFragment) context;
+    }
 
     @Nullable
     @Override
@@ -45,12 +57,20 @@ public class StudentFragment extends Fragment {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity) getActivity()).gotoStudentInfoFragment(tvName.getText().toString(), edtHomeTown.getText().toString(),
+//                ((MainActivity) getActivity()).gotoStudentInfoFragment(tvName.getText().toString(), edtHomeTown.getText().toString(),
+//                        edtMaleOrFemale.getText().toString(), edtBirthday.getText().toString(), edtClassStudent.getText().toString(),
+//                        edtCourse.getText().toString());
+                Student student = new Student(tvName.getText().toString(), edtHomeTown.getText().toString(),
                         edtMaleOrFemale.getText().toString(), edtBirthday.getText().toString(), edtClassStudent.getText().toString(),
                         edtCourse.getText().toString());
+                studentInfoFragment.gotoStudentInfoFragment(student);
             }
         });
 
         return view;
+    }
+
+    public interface GotoStudentInfoFragment{
+        void gotoStudentInfoFragment(Student student);
     }
 }
